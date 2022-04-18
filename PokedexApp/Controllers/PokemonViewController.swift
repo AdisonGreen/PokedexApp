@@ -79,7 +79,7 @@ class PokemonViewController: UIViewController {
             switch result {
             case .success(let info):
                 DispatchQueue.main.async {
-                    self.dexDescriptions.text = self.checkLanguageAndGame(info: info)
+                    self.dexDescriptions.text = self.checkGame(info: info)
                 }
             case .failure(let error):
                 print(error)
@@ -87,14 +87,34 @@ class PokemonViewController: UIViewController {
         }
     }
     
-    func checkLanguageAndGame(info: StoreDexEntire) -> String {
-        var numberInArray = 0
-
-        while info.flavor_text_entries[numberInArray].language.name != "en" {
-            numberInArray += 1
+    func checkGame(info: StoreDexEntire) -> String {
+        var index = 0
+        
+        while info.flavor_text_entries[index].version.name != "alpha-sapphire" {
+            if info.flavor_text_entries[index].version.name == "ultra-sun" && info.flavor_text_entries[index].language.name == "en" {
+                return info.flavor_text_entries[index].flavor_text
+            } else if info.flavor_text_entries[index].version.name == "sword" && info.flavor_text_entries[index].language.name == "en" {
+                return info.flavor_text_entries[index].flavor_text
+            } else {
+                index += 1
+            }
         }
+        
+        while info.flavor_text_entries[index].version.name == "alpha-sapphire" && info.flavor_text_entries[index].language.name != "en" {
+            
+        }
+        
+        return info.flavor_text_entries[index].flavor_text
+    }
+    
+    func checkLanguageAndGame(info: StoreDexEntire) -> String {
+        var index = 0
 
-        return info.flavor_text_entries[numberInArray].flavor_text
+        while info.flavor_text_entries[index].language.name != "en" {
+            index += 1
+        }
+        
+        return info.flavor_text_entries[index].flavor_text
     }
     
     func formatFirstTypeBackground() {
