@@ -20,8 +20,19 @@ struct FlavorTextEntires: Codable {
 
 struct Language: Codable {
     var name: String
+    var isEnglish: Bool {
+        return name == "en"
+    }
 }
 
 struct Version: Codable {
     var name: String
+    
+    var isGenOne: Bool {
+        return name == "red" || name == "blue" || name == "yellow" || name == "green"
+    }
+    
+//    enum VerisonCode: Decodable {
+//        case red
+//    }
 }

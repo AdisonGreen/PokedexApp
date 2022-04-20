@@ -56,16 +56,18 @@ class PokemonViewController: UIViewController {
                 DispatchQueue.main.async {
                     self.pokemonName.text = info.name.capitalizingFirstLetter()
                     self.pokedexNum.text = "# \(self.pokedexNumber)"
-                    if info.types.count == 2 {
-                        self.firstType.text = info.types.first?.type.name.capitalizingFirstLetter()
-                        self.secondType.text = info.types.last?.type.name.capitalizingFirstLetter()
+                    if let firstType = info.types.first {
+                        self.firstType.text = firstType.rawValue.capitalizingFirstLetter()
+                        self.formatTypeBackground(order: .primary, type: firstType)
+                    }
+                    
+                    if let secondType = info.types[safe: 1] {
+                        self.secondType.text = secondType.rawValue.capitalizingFirstLetter()
+                        self.formatTypeBackground(order: .secondary, type: secondType)
                     } else {
-                        self.firstType.text = info.types.first?.type.name.capitalizingFirstLetter()
                         self.secondType.textColor = .clear
                         self.secondType.backgroundColor = .clear
                     }
-                    self.formatFirstTypeBackground()
-                    self.formatSecondTypeBackground()
                 }
             case .failure(let error):
                 print(error)
@@ -79,7 +81,7 @@ class PokemonViewController: UIViewController {
             switch result {
             case .success(let info):
                 DispatchQueue.main.async {
-                    self.dexDescriptions.text = self.checkGame(info: info)
+                    self.dexDescriptions.text = self.checkDescription(info: info).replacingOccurrences(of: "\n", with: " ")
                 }
             case .failure(let error):
                 print(error)
@@ -87,255 +89,37 @@ class PokemonViewController: UIViewController {
         }
     }
     
-    func checkGame(info: StoreDexEntire) -> String {
-        var index = 0
-        
-        while info.flavor_text_entries[index].version.name != "alpha-sapphire" {
-            if info.flavor_text_entries[index].version.name == "ultra-sun" && info.flavor_text_entries[index].language.name == "en" {
-                return info.flavor_text_entries[index].flavor_text
-            } else if info.flavor_text_entries[index].version.name == "sword" && info.flavor_text_entries[index].language.name == "en" {
-                return info.flavor_text_entries[index].flavor_text
-            } else {
-                index += 1
-            }
-        }
-        
-        while info.flavor_text_entries[index].version.name == "alpha-sapphire" && info.flavor_text_entries[index].language.name != "en" {
-            
-        }
-        
-        return info.flavor_text_entries[index].flavor_text
+    func checkDescription(info: StoreDexEntire) -> String {
+        return info.flavor_text_entries.last { entries in
+            return entries.language.isEnglish && !entries.version.isGenOne
+        }?.flavor_text ?? ""
     }
     
-    func checkLanguageAndGame(info: StoreDexEntire) -> String {
-        var index = 0
+    func formatTypeBackground(order: TypeOrder, type: PokemonType) {
+        let label: UILabel
+        
+        switch order {
+        case .primary:
+            label = firstType
+        case .secondary:
+            label = secondType
+        }
+        
+        label.backgroundColor = type.color
+        label.layer.masksToBounds = true
+        label.layer.cornerRadius = 8.0
+        label.textColor = .white
+    }
+    
+    enum TypeOrder {
+        case primary, secondary
+    }
+}
 
-        while info.flavor_text_entries[index].language.name != "en" {
-            index += 1
-        }
-        
-        return info.flavor_text_entries[index].flavor_text
-    }
-    
-    func formatFirstTypeBackground() {
-        if firstType.text == "Grass" {
-            firstType.backgroundColor = UIColor(cgColor: CGColor(red: 0.3, green: 0.9, blue: 0.3, alpha: 1.0))
-            firstType.layer.masksToBounds = true
-            firstType.layer.cornerRadius = 8.0
-            firstType.textColor = .white
-        }
-        if firstType.text == "Poison" {
-            firstType.backgroundColor = UIColor(cgColor: CGColor(red: 0.5, green: 0.1, blue: 0.5, alpha: 1.0))
-            firstType.layer.masksToBounds = true
-            firstType.layer.cornerRadius = 8.0
-            firstType.textColor = .white
-        }
-        if firstType.text == "Fire" {
-            firstType.backgroundColor = UIColor(cgColor: CGColor(red: 0.9, green: 0.2, blue: 0.2, alpha: 1.0))
-            firstType.layer.masksToBounds = true
-            firstType.layer.cornerRadius = 8.0
-            firstType.textColor = .white
-        }
-        if firstType.text == "Flying" {
-            firstType.backgroundColor = UIColor(cgColor: CGColor(red: 0.1, green: 0.7, blue: 0.8, alpha: 1.0))
-            firstType.layer.masksToBounds = true
-            firstType.layer.cornerRadius = 8.0
-            firstType.textColor = .white
-        }
-        if firstType.text == "Bug" {
-            firstType.backgroundColor = UIColor(cgColor: CGColor(red: 0.2, green: 0.4, blue: 0.1, alpha: 1.0))
-            firstType.layer.masksToBounds = true
-            firstType.layer.cornerRadius = 8.0
-            firstType.textColor = .white
-        }
-        if firstType.text == "Normal" {
-            firstType.backgroundColor = UIColor(cgColor: CGColor(red: 0.7, green: 0.7, blue: 0.7, alpha: 1.0))
-            firstType.layer.masksToBounds = true
-            firstType.layer.cornerRadius = 8.0
-            firstType.textColor = .white
-        }
-        if firstType.text == "Electric" {
-            firstType.backgroundColor = UIColor(cgColor: CGColor(red: 0.9, green: 0.9, blue: 0.1, alpha: 1.0))
-            firstType.layer.masksToBounds = true
-            firstType.layer.cornerRadius = 8.0
-            firstType.textColor = .white
-        }
-        if firstType.text == "Rock" {
-            firstType.backgroundColor = UIColor(cgColor: CGColor(red: 0.5, green: 0.4, blue: 0.2, alpha: 1.0))
-            firstType.layer.masksToBounds = true
-            firstType.layer.cornerRadius = 8.0
-            firstType.textColor = .white
-        }
-        if firstType.text == "Ground" {
-            firstType.backgroundColor = UIColor(cgColor: CGColor(red: 0.7, green: 0.5, blue: 0.1, alpha: 1.0))
-            firstType.layer.masksToBounds = true
-            firstType.layer.cornerRadius = 8.0
-            firstType.textColor = .white
-        }
-        if firstType.text == "Water" {
-            firstType.backgroundColor = UIColor(cgColor: CGColor(red: 0.1, green: 0.5, blue: 0.9, alpha: 1.0))
-            firstType.layer.masksToBounds = true
-            firstType.layer.cornerRadius = 8.0
-            firstType.textColor = .white
-        }
-        if firstType.text == "Fairy" {
-            firstType.backgroundColor = UIColor(cgColor: CGColor(red: 0.9, green: 0.5, blue: 0.6, alpha: 1.0))
-            firstType.layer.masksToBounds = true
-            firstType.layer.cornerRadius = 8.0
-            firstType.textColor = .white
-        }
-        if firstType.text == "Fighting" {
-            firstType.backgroundColor = UIColor(cgColor: CGColor(red: 0.9, green: 0.4, blue: 0.1, alpha: 1.0))
-            firstType.layer.masksToBounds = true
-            firstType.layer.cornerRadius = 8.0
-            firstType.textColor = .white
-        }
-        if firstType.text == "Psychic" {
-            firstType.backgroundColor = UIColor(cgColor: CGColor(red: 0.9, green: 0.3, blue: 0.4, alpha: 1.0))
-            firstType.layer.masksToBounds = true
-            firstType.layer.cornerRadius = 8.0
-            firstType.textColor = .white
-        }
-        if firstType.text == "Ice" {
-            firstType.backgroundColor = UIColor(cgColor: CGColor(red: 0.3, green: 0.7, blue: 0.9, alpha: 1.0))
-            firstType.layer.masksToBounds = true
-            firstType.layer.cornerRadius = 8.0
-            firstType.textColor = .white
-        }
-        if firstType.text == "Dragon" {
-            firstType.backgroundColor = UIColor(cgColor: CGColor(red: 0.3, green: 0.3, blue: 0.9, alpha: 1.0))
-            firstType.layer.masksToBounds = true
-            firstType.layer.cornerRadius = 8.0
-            firstType.textColor = .white
-        }
-        if firstType.text == "Steel" {
-            firstType.backgroundColor = UIColor(cgColor: CGColor(red: 0.8, green: 0.8, blue: 0.9, alpha: 1.0))
-            firstType.layer.masksToBounds = true
-            firstType.layer.cornerRadius = 8.0
-            firstType.textColor = .white
-        }
-        if firstType.text == "Ghost" {
-            firstType.backgroundColor = UIColor(cgColor: CGColor(red: 0.6, green: 0.4, blue: 0.6, alpha: 1.0))
-            firstType.layer.masksToBounds = true
-            firstType.layer.cornerRadius = 8.0
-            firstType.textColor = .white
-        }
-        if firstType.text == "Dark" {
-            firstType.backgroundColor = UIColor(cgColor: CGColor(red: 0.0, green: 0.0, blue: 0.0, alpha: 1.0))
-            firstType.layer.masksToBounds = true
-            firstType.layer.cornerRadius = 8.0
-            firstType.textColor = .white
-        }
-    }
-    
-    func formatSecondTypeBackground() {
-        if secondType.text == "Grass" {
-            secondType.backgroundColor = UIColor(cgColor: CGColor(red: 0.3, green: 0.9, blue: 0.3, alpha: 1.0))
-            secondType.layer.masksToBounds = true
-            secondType.layer.cornerRadius = 8.0
-            secondType.textColor = .white
-        }
-        if secondType.text == "Poison" {
-            secondType.backgroundColor = UIColor(cgColor: CGColor(red: 0.5, green: 0.1, blue: 0.5, alpha: 1.0))
-            secondType.layer.masksToBounds = true
-            secondType.layer.cornerRadius = 8.0
-            secondType.textColor = .white
-        }
-        if secondType.text == "Fire" {
-            secondType.backgroundColor = UIColor(cgColor: CGColor(red: 0.9, green: 0.2, blue: 0.2, alpha: 1.0))
-            secondType.layer.masksToBounds = true
-            secondType.layer.cornerRadius = 8.0
-            secondType.textColor = .white
-        }
-        if secondType.text == "Flying" {
-            secondType.backgroundColor = UIColor(cgColor: CGColor(red: 0.1, green: 0.7, blue: 0.8, alpha: 1.0))
-            secondType.layer.masksToBounds = true
-            secondType.layer.cornerRadius = 8.0
-            secondType.textColor = .white
-        }
-        if secondType.text == "Bug" {
-            secondType.backgroundColor = UIColor(cgColor: CGColor(red: 0.2, green: 0.4, blue: 0.1, alpha: 1.0))
-            secondType.layer.masksToBounds = true
-            secondType.layer.cornerRadius = 8.0
-            secondType.textColor = .white
-        }
-        if secondType.text == "Normal" {
-            secondType.backgroundColor = UIColor(cgColor: CGColor(red: 0.7, green: 0.7, blue: 0.7, alpha: 1.0))
-            secondType.layer.masksToBounds = true
-            secondType.layer.cornerRadius = 8.0
-            secondType.textColor = .white
-        }
-        if secondType.text == "Electric" {
-            secondType.backgroundColor = UIColor(cgColor: CGColor(red: 0.9, green: 0.9, blue: 0.1, alpha: 1.0))
-            secondType.layer.masksToBounds = true
-            secondType.layer.cornerRadius = 8.0
-            secondType.textColor = .white
-        }
-        if secondType.text == "Rock" {
-            secondType.backgroundColor = UIColor(cgColor: CGColor(red: 0.5, green: 0.4, blue: 0.2, alpha: 1.0))
-            secondType.layer.masksToBounds = true
-            secondType.layer.cornerRadius = 8.0
-            secondType.textColor = .white
-        }
-        if secondType.text == "Ground" {
-            secondType.backgroundColor = UIColor(cgColor: CGColor(red: 0.7, green: 0.5, blue: 0.1, alpha: 1.0))
-            secondType.layer.masksToBounds = true
-            secondType.layer.cornerRadius = 8.0
-            secondType.textColor = .white
-        }
-        if secondType.text == "Water" {
-            secondType.backgroundColor = UIColor(cgColor: CGColor(red: 0.1, green: 0.5, blue: 0.9, alpha: 1.0))
-            secondType.layer.masksToBounds = true
-            secondType.layer.cornerRadius = 8.0
-            secondType.textColor = .white
-        }
-        if secondType.text == "Fairy" {
-            secondType.backgroundColor = UIColor(cgColor: CGColor(red: 0.9, green: 0.5, blue: 0.6, alpha: 1.0))
-            secondType.layer.masksToBounds = true
-            secondType.layer.cornerRadius = 8.0
-            secondType.textColor = .white
-        }
-        if secondType.text == "Fighting" {
-            secondType.backgroundColor = UIColor(cgColor: CGColor(red: 0.9, green: 0.4, blue: 0.1, alpha: 1.0))
-            secondType.layer.masksToBounds = true
-            secondType.layer.cornerRadius = 8.0
-            secondType.textColor = .white
-        }
-        if secondType.text == "Psychic" {
-            secondType.backgroundColor = UIColor(cgColor: CGColor(red: 0.9, green: 0.3, blue: 0.4, alpha: 1.0))
-            secondType.layer.masksToBounds = true
-            secondType.layer.cornerRadius = 8.0
-            secondType.textColor = .white
-        }
-        if secondType.text == "Ice" {
-            secondType.backgroundColor = UIColor(cgColor: CGColor(red: 0.3, green: 0.7, blue: 0.9, alpha: 1.0))
-            secondType.layer.masksToBounds = true
-            secondType.layer.cornerRadius = 8.0
-            secondType.textColor = .white
-        }
-        if secondType.text == "Dragon" {
-            secondType.backgroundColor = UIColor(cgColor: CGColor(red: 0.3, green: 0.3, blue: 0.9, alpha: 1.0))
-            secondType.layer.masksToBounds = true
-            secondType.layer.cornerRadius = 8.0
-            secondType.textColor = .white
-        }
-        if secondType.text == "Steel" {
-            secondType.backgroundColor = UIColor(cgColor: CGColor(red: 0.8, green: 0.8, blue: 0.9, alpha: 1.0))
-            secondType.layer.masksToBounds = true
-            secondType.layer.cornerRadius = 8.0
-            secondType.textColor = .white
-        }
-        if secondType.text == "Ghost" {
-            secondType.backgroundColor = UIColor(cgColor: CGColor(red: 0.6, green: 0.4, blue: 0.6, alpha: 1.0))
-            secondType.layer.masksToBounds = true
-            secondType.layer.cornerRadius = 8.0
-            secondType.textColor = .white
-        }
-        if secondType.text == "Dark" {
-            secondType.backgroundColor = UIColor(cgColor: CGColor(red: 0.0, green: 0.0, blue: 0.0, alpha: 1.0))
-            secondType.layer.masksToBounds = true
-            secondType.layer.cornerRadius = 8.0
-            secondType.textColor = .white
-        }
+extension Collection {
+
+    /// Returns the element at the specified index if it is within bounds, otherwise nil.
+    subscript (safe index: Index) -> Element? {
+        return indices.contains(index) ? self[index] : nil
     }
 }
