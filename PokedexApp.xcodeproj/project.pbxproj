@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		B340204B2805D36B00255AE1 /* StorePokemon.swift in Sources */ = {isa = PBXBuildFile; fileRef = B340204A2805D36B00255AE1 /* StorePokemon.swift */; };
 		B340204F2808737B00255AE1 /* Pokemon.swift in Sources */ = {isa = PBXBuildFile; fileRef = B340204E2808737B00255AE1 /* Pokemon.swift */; };
-		B3402051280DB0A900255AE1 /* StoreDexEntrie.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3402050280DB0A900255AE1 /* StoreDexEntrie.swift */; };
+		B3402051280DB0A900255AE1 /* StoreDexEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3402050280DB0A900255AE1 /* StoreDexEntry.swift */; };
 		B3402053280DB18D00255AE1 /* DexEntries.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3402052280DB18D00255AE1 /* DexEntries.swift */; };
 		B398367527DB9702003FE150 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B398367427DB9702003FE150 /* AppDelegate.swift */; };
 		B398367727DB9702003FE150 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B398367627DB9702003FE150 /* SceneDelegate.swift */; };
@@ -29,7 +29,7 @@
 /* Begin PBXFileReference section */
 		B340204A2805D36B00255AE1 /* StorePokemon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorePokemon.swift; sourceTree = "<group>"; };
 		B340204E2808737B00255AE1 /* Pokemon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pokemon.swift; sourceTree = "<group>"; };
-		B3402050280DB0A900255AE1 /* StoreDexEntrie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreDexEntrie.swift; sourceTree = "<group>"; };
+		B3402050280DB0A900255AE1 /* StoreDexEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreDexEntry.swift; sourceTree = "<group>"; };
 		B3402052280DB18D00255AE1 /* DexEntries.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DexEntries.swift; sourceTree = "<group>"; };
 		B398367127DB9702003FE150 /* PokedexApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PokedexApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B398367427DB9702003FE150 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -111,7 +111,7 @@
 				B340204E2808737B00255AE1 /* Pokemon.swift */,
 				B340204A2805D36B00255AE1 /* StorePokemon.swift */,
 				B3402052280DB18D00255AE1 /* DexEntries.swift */,
-				B3402050280DB0A900255AE1 /* StoreDexEntrie.swift */,
+				B3402050280DB0A900255AE1 /* StoreDexEntry.swift */,
 			);
 			path = API;
 			sourceTree = "<group>";
@@ -205,7 +205,7 @@
 				B398368D27DBA6D0003FE150 /* StoreAllPokemon.swift in Sources */,
 				B39836F627FB3891003FE150 /* StorePokemonSprite.swift in Sources */,
 				B39836F827FB397C003FE150 /* PokemonSprites.swift in Sources */,
-				B3402051280DB0A900255AE1 /* StoreDexEntrie.swift in Sources */,
+				B3402051280DB0A900255AE1 /* StoreDexEntry.swift in Sources */,
 				B398368927DB97C1003FE150 /* PokedexMainScreenTableViewController.swift in Sources */,
 				B398369327DBAFC9003FE150 /* PokemonViewController.swift in Sources */,
 				B398367727DB9702003FE150 /* SceneDelegate.swift in Sources */,

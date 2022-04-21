@@ -8,11 +8,11 @@
 import Foundation
 import UIKit
 
-struct StoreDexEntire: Codable {
-    var flavor_text_entries: [FlavorTextEntires]
+struct StoreDexEntry: Codable {
+    var flavor_text_entries: [FlavorTextEntries]
 }
 
-struct FlavorTextEntires: Codable {
+struct FlavorTextEntries: Codable {
     var flavor_text: String
     var language: Language
     var version: Version
@@ -31,8 +31,4 @@ struct Version: Codable {
     var isGenOne: Bool {
         return name == "red" || name == "blue" || name == "yellow" || name == "green"
     }
-    
-//    enum VerisonCode: Decodable {
-//        case red
-//    }
 }

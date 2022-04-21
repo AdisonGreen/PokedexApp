@@ -11,15 +11,18 @@ import UIKit
 struct StorePokemon: Decodable {
     var name: String
     var types: [PokemonType]
+    var abilities: [Abilities]
 }
 
-//struct PokemonTypes: Codable {
-//    var type: Types
-//}
-//
-//struct Types: Codable {
-//    var name: String
-//}
+struct Abilities: Decodable {
+    var ability: AbilitiyName
+    var is_hidden: Bool
+}
+
+struct AbilitiyName: Decodable {
+    var name: String
+    var url: String
+}
 
 enum PokemonError: Error {
     case decodeFail

@@ -14,6 +14,8 @@ class PokemonViewController: UIViewController {
     @IBOutlet weak var firstType: UILabel!
     @IBOutlet weak var secondType: UILabel!
     @IBOutlet weak var dexDescriptions: UILabel!
+    @IBOutlet weak var abilityNameLabel: UILabel!
+    @IBOutlet weak var AbilityDescriptionLabel: UILabel!
     
     var pokedexNumber: Int
     
@@ -56,6 +58,8 @@ class PokemonViewController: UIViewController {
                 DispatchQueue.main.async {
                     self.pokemonName.text = info.name.capitalizingFirstLetter()
                     self.pokedexNum.text = "# \(self.pokedexNumber)"
+                    self.abilityNameLabel.text = info.abilities.first?.ability.name.capitalizingFirstLetter()
+                    
                     if let firstType = info.types.first {
                         self.firstType.text = firstType.rawValue.capitalizingFirstLetter()
                         self.formatTypeBackground(order: .primary, type: firstType)
@@ -89,7 +93,7 @@ class PokemonViewController: UIViewController {
         }
     }
     
-    func checkDescription(info: StoreDexEntire) -> String {
+    func checkDescription(info: StoreDexEntry) -> String {
         return info.flavor_text_entries.last { entries in
             return entries.language.isEnglish && !entries.version.isGenOne
         }?.flavor_text ?? ""

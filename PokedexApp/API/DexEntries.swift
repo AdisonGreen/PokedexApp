@@ -11,7 +11,7 @@ import UIKit
 struct DexEntries {
     var pokedexNumber: Int
     
-    func fetchItems(compeltion: @escaping (Result<StoreDexEntire, Error>) -> Void) {
+    func fetchItems(compeltion: @escaping (Result<StoreDexEntry, Error>) -> Void) {
         let urlComponents = URLComponents(string: "https://pokeapi.co/api/v2/pokemon-species/\(pokedexNumber)/")!
         let task = URLSession.shared.dataTask(with: urlComponents.url!) { data, response, error in
             if let error = error {
@@ -20,7 +20,7 @@ struct DexEntries {
                 do {
                     let decoder = JSONDecoder()
                     let searchResponse = try
-                    decoder.decode(StoreDexEntire.self, from: data)
+                    decoder.decode(StoreDexEntry.self, from: data)
                     compeltion(.success(searchResponse))
                 } catch {
                     compeltion(.failure(error))
