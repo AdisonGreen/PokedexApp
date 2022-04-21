@@ -11,6 +11,7 @@
 		B340204F2808737B00255AE1 /* Pokemon.swift in Sources */ = {isa = PBXBuildFile; fileRef = B340204E2808737B00255AE1 /* Pokemon.swift */; };
 		B3402051280DB0A900255AE1 /* StoreDexEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3402050280DB0A900255AE1 /* StoreDexEntry.swift */; };
 		B3402053280DB18D00255AE1 /* DexEntries.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3402052280DB18D00255AE1 /* DexEntries.swift */; };
+		B34020552811AAD300255AE1 /* ColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B34020542811AAD300255AE1 /* ColorExtension.swift */; };
 		B398367527DB9702003FE150 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B398367427DB9702003FE150 /* AppDelegate.swift */; };
 		B398367727DB9702003FE150 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B398367627DB9702003FE150 /* SceneDelegate.swift */; };
 		B398367C27DB9702003FE150 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B398367A27DB9702003FE150 /* Main.storyboard */; };
@@ -31,6 +32,7 @@
 		B340204E2808737B00255AE1 /* Pokemon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pokemon.swift; sourceTree = "<group>"; };
 		B3402050280DB0A900255AE1 /* StoreDexEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreDexEntry.swift; sourceTree = "<group>"; };
 		B3402052280DB18D00255AE1 /* DexEntries.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DexEntries.swift; sourceTree = "<group>"; };
+		B34020542811AAD300255AE1 /* ColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorExtension.swift; sourceTree = "<group>"; };
 		B398367127DB9702003FE150 /* PokedexApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PokedexApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B398367427DB9702003FE150 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B398367627DB9702003FE150 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -120,6 +122,7 @@
 			isa = PBXGroup;
 			children = (
 				B398369027DBADEF003FE150 /* StringExtension.swift */,
+				B34020542811AAD300255AE1 /* ColorExtension.swift */,
 			);
 			path = Other;
 			sourceTree = "<group>";
@@ -204,6 +207,7 @@
 				B340204F2808737B00255AE1 /* Pokemon.swift in Sources */,
 				B398368D27DBA6D0003FE150 /* StoreAllPokemon.swift in Sources */,
 				B39836F627FB3891003FE150 /* StorePokemonSprite.swift in Sources */,
+				B34020552811AAD300255AE1 /* ColorExtension.swift in Sources */,
 				B39836F827FB397C003FE150 /* PokemonSprites.swift in Sources */,
 				B3402051280DB0A900255AE1 /* StoreDexEntry.swift in Sources */,
 				B398368927DB97C1003FE150 /* PokedexMainScreenTableViewController.swift in Sources */,
