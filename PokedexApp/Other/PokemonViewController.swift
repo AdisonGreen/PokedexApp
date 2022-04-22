@@ -114,16 +114,4 @@ class PokemonViewController: UIViewController {
         label.layer.cornerRadius = 8.0
         label.textColor = .white
     }
-    
-    enum TypeOrder {
-        case primary, secondary
-    }
-}
-
-extension Collection {
-
-    /// Returns the element at the specified index if it is within bounds, otherwise nil.
-    subscript (safe index: Index) -> Element? {
-        return indices.contains(index) ? self[index] : nil
-    }
 }

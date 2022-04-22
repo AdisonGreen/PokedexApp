@@ -67,24 +67,24 @@ enum PokemonType: String, Decodable {
     
     var color: UIColor {
         switch self {
-        case .grass: return .grassGreen
-        case .poison: return .poisonPurple
-        case .fire: return .fireRed
-        case .flying: return .flyingBlue
-        case .bug: return .bugGreen
-        case .normal: return .normalGray
-        case .electric: return .electricYellow
-        case .rock: return .rockBrown
-        case .ground: return .groundBrown
-        case .water: return .waterBlue
-        case .fairy: return .fairyPink
-        case .fighting: return .fightingOrange
-        case .psychic: return .psychicPink
-        case .ice: return .iceBlue
-        case .dragon: return .dragonBlue
-        case .steel: return .steelGray
-        case .ghost: return .ghostPurple
-        case .dark: return .darkBlack
+        case .grass: return .grassTypeColor
+        case .poison: return .poisonTypeColor
+        case .fire: return .fireTypeColor
+        case .flying: return .flyingTypeColor
+        case .bug: return .bugTypeColor
+        case .normal: return .normalTypeColor
+        case .electric: return .electricTypeColor
+        case .rock: return .rockTypeColor
+        case .ground: return .groundTypeColor
+        case .water: return .waterTypeColor
+        case .fairy: return .fairyTypeColor
+        case .fighting: return .fireTypeColor
+        case .psychic: return .psychicTypeColor
+        case .ice: return .iceTypeColor
+        case .dragon: return .dragonTypeColor
+        case .steel: return .steelTypeColor
+        case .ghost: return .ghostTypeColor
+        case .dark: return .darkTypeColor
         case .unknown: return .gray
         }
     }

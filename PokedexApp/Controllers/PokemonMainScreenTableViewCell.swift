@@ -7,7 +7,7 @@
 
 import UIKit
 
-class PokemonCell: UITableViewCell {
+class PokemonMainScreenTableViewCell: UITableViewCell {
     @IBOutlet weak var pokemonImage: UIImageView!
     @IBOutlet weak var pokemonName: UILabel!
 }

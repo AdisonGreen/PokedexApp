@@ -35,7 +35,7 @@ class PokedexMainScreenTableViewController: UITableViewController {
         }
     }
     
-    func configure(cell: PokemonCell, forItemAt indexPath: IndexPath) {
+    func configure(cell: PokemonMainScreenTableViewCell, forItemAt indexPath: IndexPath) {
         let item = items[indexPath.row]
         cell.pokemonName.text = item.name.capitalizingFirstLetter()
     }
@@ -48,18 +48,18 @@ class PokedexMainScreenTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "Pokemon", for: indexPath) as! PokemonCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Pokemon", for: indexPath) as! PokemonMainScreenTableViewCell
         
         configure(cell: cell, forItemAt: indexPath)
         
         return cell
     }
     
-    @IBSegueAction func pokemonTapped(_ coder: NSCoder, sender: Any?) -> PokemonViewController? {
+    @IBSegueAction func pokemonTapped(_ coder: NSCoder, sender: Any?) -> PokemonTableViewController? {
         guard let cell = sender as? UITableViewCell, let indexPath = tableView.indexPath(for: cell) else {
             return nil
         }
         
-        return PokemonViewController(coder: coder, pokedexNumber: (indexPath.row + 1))
+        return PokemonTableViewController(coder: coder, pokedexNumber: (indexPath.row + 1))
     }
 }
