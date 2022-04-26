@@ -23,31 +23,20 @@ class PokemonTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+//        tableView.delegate = self
+//        tableView.dataSource = self
+        tableView.separatorStyle = .none
     }
     
-    func configure(cell: PokemonTableViewCell, forItemAt indexPath: IndexPath) {
-        let pokemonSpriteInstance = PokemonSprites(pokedexNumber: pokedexNumber)
-        pokemonSpriteInstance.fetchItems { result in
-            switch result {
-            case .success(let info):
-                DispatchQueue.main.async {
-                    cell.pokemonImage.image = info
-                }
-            case .failure(let error):
-                print(error)
-            }
-        }
-        
+    func fetchTypesAndConfigure(cell: PokemonTypesTableViewCell, forItemAt indexPath: IndexPath) {
         let pokemonInstance = Pokemon(pokedexNumber: pokedexNumber)
         pokemonInstance.fetchItems { result in
             switch result {
             case .success(let info):
                 DispatchQueue.main.async {
-                    self.navigationItem.title = info.name.capitalizingFirstLetter()
-                    cell.nameLabel.text = info.name.capitalizingFirstLetter()
-                    cell.pokedexNumberLabel.text = "# \(self.pokedexNumber)"
-                    cell.firstAbilityNameLabel.text = info.abilities.first?.ability.name.capitalizingFirstLetter()
                     
+//                    cell.firstAbilityNameLabel.text = info.abilities.first?.ability.name.capitalizingFirstLetter()
+
                     if let typeOne = info.types.first {
                         cell.typeOneLabel.text = typeOne.rawValue.capitalizingFirstLetter()
 
@@ -56,7 +45,7 @@ class PokemonTableViewController: UITableViewController {
                         cell.typeOneLabel.layer.cornerRadius = 8.0
                         cell.typeOneLabel.textColor = .white
                     }
-                    
+
                     if let secondType = info.types[safe: 1] {
                         cell.typeTwoLabel.text = secondType.rawValue.capitalizingFirstLetter()
 
@@ -73,7 +62,40 @@ class PokemonTableViewController: UITableViewController {
                 print(error)
             }
         }
-        
+    }
+    
+    func fetchAndConfigureNameAndNumber(cell: PokemonNameAndNumberTableViewCell, forItemAt indexPath: IndexPath) {
+        let pokemonInstance = Pokemon(pokedexNumber: pokedexNumber)
+        pokemonInstance.fetchItems { result in
+            switch result {
+            case .success(let info):
+                DispatchQueue.main.async {
+                    
+                    self.navigationItem.title = info.name.capitalizingFirstLetter()
+                    cell.nameLabel.text = info.name.capitalizingFirstLetter()
+                    cell.pokedexNumberLabel.text = "# \(self.pokedexNumber)"
+                }
+            case .failure(let error):
+                print(error)
+            }
+        }
+    }
+    
+    func fetchImageAndConfigure(cell: PokemonImageTableViewCell, forItemAt indexPath: IndexPath) {
+                let pokemonSpriteInstance = PokemonSprites(pokedexNumber: pokedexNumber)
+                pokemonSpriteInstance.fetchItems { result in
+                    switch result {
+                    case .success(let info):
+                        DispatchQueue.main.async {
+                            cell.pokemonImage.image = info
+                        }
+                    case .failure(let error):
+                        print(error)
+                    }
+                }
+    }
+    
+    func fetchDescriptionAndConfigure(cell: PokemonDescriptionTableViewCell, forItemAt indexPath: IndexPath) {
         let dexInstance = DexEntries(pokedexNumber: pokedexNumber)
         dexInstance.fetchItems { result in
             switch result {
@@ -96,21 +118,42 @@ class PokemonTableViewController: UITableViewController {
 
     // MARK: - Table view data source
 
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 1
-    }
-
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 1
+        return 5
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "PokemonInfo", for: indexPath) as! PokemonTableViewCell
-        
-        configure(cell: cell, forItemAt: indexPath)
-        
-        return cell
+        if indexPath.row == 0 {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "PokemonNameAndNumber", for: indexPath) as! PokemonNameAndNumberTableViewCell
+            
+            fetchAndConfigureNameAndNumber(cell: cell, forItemAt: indexPath)
+            
+            return cell
+        } else if indexPath.row == 1 {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "PokemonImage", for: indexPath) as! PokemonImageTableViewCell
+            
+            fetchImageAndConfigure(cell: cell, forItemAt: indexPath)
+            
+            return cell
+        } else if indexPath.row == 2 {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "PokemonTypes", for: indexPath) as! PokemonTypesTableViewCell
+            
+            fetchTypesAndConfigure(cell: cell, forItemAt: indexPath)
+            
+            return cell
+        } else if indexPath.row == 3 {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "PokemonDescription", for: indexPath) as! PokemonDescriptionTableViewCell
+            
+            fetchDescriptionAndConfigure(cell: cell, forItemAt: indexPath)
+            
+            return cell
+        } else if indexPath.row == 4 {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "PokemonAbilities", for: indexPath) as! PokemonAbilitesTableViewCell
+            
+            return cell
+        } else {
+            return tableView.dequeueReusableCell(withIdentifier: "Should never happen", for: indexPath)
+        }
     }
 }
