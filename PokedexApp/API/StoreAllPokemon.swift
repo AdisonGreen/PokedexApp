@@ -10,7 +10,9 @@ import UIKit
 
 struct StoreAllPokemon: Codable {
     var name: String
-    var url: URL
+    var indexPathForMon: Int {
+        return 0
+    }
 }
 
 struct SearchResponse: Codable {

@@ -23,9 +23,144 @@ class PokemonTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-//        tableView.delegate = self
-//        tableView.dataSource = self
         tableView.separatorStyle = .none
+    }
+    
+    func fetchAbilitesAndConfigure(cell: PokemonAbilitesTableViewCell, forItemAt indexPath: IndexPath) {
+        let pokemonInstance = Pokemon(pokedexNumber: pokedexNumber)
+        pokemonInstance.fetchItems { result in
+            switch result {
+            case .success(let info):
+                DispatchQueue.main.async {
+                    
+                    if info.abilities.count == 1 {
+                        cell.firstAbilityNameLabel.text = info.abilities.first?.ability.name.capitalizingFirstLetter()
+                        cell.firstAbilityNameLabel.textColor = .systemMint
+                        
+                        if info.abilities.first?.is_hidden == true {
+                            cell.firstAbilityNameLabel.text! += " - Hidden Ability"
+                        }
+                        
+                        let abilityDescriptionsInstance = AbilityDescriptions()
+                        abilityDescriptionsInstance.fetchItems(url: (info.abilities.first?.ability.url)!) { descriptionResult in
+                            switch descriptionResult {
+                            case .success(let descriptionInfo):
+                                DispatchQueue.main.async {
+                                    cell.firstAbilityDescriptionLabel.text = self.checkAbilityDescription(info: descriptionInfo).replacingOccurrences(of: "\n", with: " ")
+                                }
+                                
+                            case .failure(let error):
+                                print(error)
+                            }
+                        }
+                        
+                        cell.secondAbilityNameLabel.isHidden = true
+                        cell.secondAbilityDescriptionLabel.isHidden = true
+                        
+                        cell.thirdAbiltyNameLabel.isHidden = true
+                        cell.thirdAbilityDescriptionLabel.isHidden = true
+                    } else if info.abilities.count == 2 {
+                        cell.firstAbilityNameLabel.text = info.abilities.first?.ability.name.capitalizingFirstLetter()
+                        cell.firstAbilityNameLabel.textColor = .systemMint
+                        
+                        let abilityDescriptionsInstance = AbilityDescriptions()
+                        abilityDescriptionsInstance.fetchItems(url: (info.abilities.first?.ability.url)!) { descriptionResult in
+                            switch descriptionResult {
+                            case .success(let descriptionInfo):
+                                DispatchQueue.main.async {
+                                    cell.firstAbilityDescriptionLabel.text = self.checkAbilityDescription(info: descriptionInfo).replacingOccurrences(of: "\n", with: " ")
+                                    
+                                }
+                                
+                            case .failure(let error):
+                                print(error)
+                            }
+                        }
+                        
+                        cell.secondAbilityNameLabel.text = info.abilities.last?.ability.name.capitalizingFirstLetter()
+                        cell.secondAbilityNameLabel.textColor = .systemMint
+                        
+                        abilityDescriptionsInstance.fetchItems(url: (info.abilities.last?.ability.url)!) { descriptionResult in
+                            switch descriptionResult {
+                            case .success(let descriptionInfo):
+                                DispatchQueue.main.async {
+                                    cell.secondAbilityDescriptionLabel.text = self.checkAbilityDescription(info: descriptionInfo).replacingOccurrences(of: "\n", with: " ")
+                                }
+                                
+                            case .failure(let error):
+                                print(error)
+                            }
+                        }
+                        
+                        if info.abilities.last?.is_hidden == true {
+                            cell.secondAbilityNameLabel.text! += " - Hidden Ability"
+                        } else if info.abilities.first?.is_hidden == true {
+                            cell.firstAbilityNameLabel.text! += " - Hidden Ability"
+                        }
+                        
+                        cell.thirdAbiltyNameLabel.isHidden = true
+                        cell.thirdAbilityDescriptionLabel.isHidden = true
+                    } else {
+                        cell.firstAbilityNameLabel.text = info.abilities[0].ability.name.capitalizingFirstLetter()
+                        cell.firstAbilityNameLabel.textColor = .systemMint
+                        
+                        let abilityDescriptionsInstance = AbilityDescriptions()
+                        abilityDescriptionsInstance.fetchItems(url: info.abilities[0].ability.url) { descriptionResult in
+                            switch descriptionResult {
+                            case .success(let descriptionInfo):
+                                DispatchQueue.main.async {
+                                    cell.firstAbilityDescriptionLabel.text = self.checkAbilityDescription(info: descriptionInfo).replacingOccurrences(of: "\n", with: " ")
+                                }
+                                
+                            case .failure(let error):
+                                print(error)
+                            }
+                        }
+                        
+                        cell.secondAbilityNameLabel.text = info.abilities[1].ability.name.capitalizingFirstLetter()
+                        cell.secondAbilityNameLabel.textColor = .systemMint
+                        
+                        abilityDescriptionsInstance.fetchItems(url: info.abilities[1].ability.url) { descriptionResult in
+                            switch descriptionResult {
+                            case .success(let descriptionInfo):
+                                DispatchQueue.main.async {
+                                    cell.secondAbilityDescriptionLabel.text = self.checkAbilityDescription(info: descriptionInfo).replacingOccurrences(of: "\n", with: " ")
+                                }
+                                
+                            case .failure(let error):
+                                print(error)
+                            }
+                        }
+                        
+                        cell.thirdAbiltyNameLabel.text = info.abilities[2].ability.name.capitalizingFirstLetter()
+                        cell.thirdAbiltyNameLabel.textColor = .systemMint
+                        
+                        abilityDescriptionsInstance.fetchItems(url: info.abilities[2].ability.url) { descriptionResult in
+                            switch descriptionResult {
+                            case .success(let descriptionInfo):
+                                DispatchQueue.main.async {
+                                    cell.thirdAbilityDescriptionLabel.text = self.checkAbilityDescription(info: descriptionInfo).replacingOccurrences(of: "\n", with: " ")
+                                }
+                                
+                            case .failure(let error):
+                                print(error)
+                            }
+                        }
+                        
+                        if info.abilities[0].is_hidden == true {
+                            cell.firstAbilityNameLabel.text! += " - Hidden Ability"
+                        } else if info.abilities[1].is_hidden == true {
+                            cell.secondAbilityNameLabel.text! += " - Hidden Ability"
+                        } else if info.abilities[2].is_hidden == true {
+                            cell.thirdAbiltyNameLabel.text! += " - Hidden Ability"
+                        }
+                    }
+            }
+                
+            case .failure(let error):
+                print(error)
+            }
+        }
     }
     
     func fetchTypesAndConfigure(cell: PokemonTypesTableViewCell, forItemAt indexPath: IndexPath) {
@@ -34,8 +169,6 @@ class PokemonTableViewController: UITableViewController {
             switch result {
             case .success(let info):
                 DispatchQueue.main.async {
-                    
-//                    cell.firstAbilityNameLabel.text = info.abilities.first?.ability.name.capitalizingFirstLetter()
 
                     if let typeOne = info.types.first {
                         cell.typeOneLabel.text = typeOne.rawValue.capitalizingFirstLetter()
@@ -102,8 +235,32 @@ class PokemonTableViewController: UITableViewController {
             case .success(let info):
                 DispatchQueue.main.async {
                     cell.descriptionLabel.text = self.checkDescription(info: info).replacingOccurrences(of: "\n", with: " ")
+                    
                 }
             case .failure(let error):
+                print(error)
+            }
+        }
+    }
+    
+    func fetchStatsAndConfigure(cell: PokemonStatsTableViewCell, forItemAt indexPath: IndexPath) {
+        let statsInstance = PokemonStats(pokedexNumber: pokedexNumber)
+        statsInstance.fetchItems { result in
+            switch result {
+            case.success(let info):
+                DispatchQueue.main.async {
+                    cell.hpStatLabel.text = info.stats[0].base_stat.description
+                    cell.attStatLabel.text = info.stats[1].base_stat.description
+                    cell.defStatLabel.text = info.stats[2].base_stat.description
+                    cell.sAttStatLabel.text = info.stats[3].base_stat.description
+                    cell.sDefStatLabel.text = info.stats[4].base_stat.description
+                    cell.speStatLabel.text = info.stats[5].base_stat.description
+                    
+                    let total = (info.stats[0].base_stat + info.stats[1].base_stat) + (info.stats[2].base_stat + info.stats[3].base_stat) + (info.stats[4].base_stat + info.stats[5].base_stat)
+                    
+                    cell.totalStatLabel.text = total.description
+                }
+            case.failure(let error):
                 print(error)
             }
         }
@@ -114,13 +271,19 @@ class PokemonTableViewController: UITableViewController {
             return entries.language.isEnglish && !entries.version.isGenOne
         }?.flavor_text ?? ""
     }
+    
+    func checkAbilityDescription(info: StoreAbilityDescriptions) -> String {
+        return info.flavor_text_entries.last { entries in
+            return entries.language.isEnglish
+        }?.flavor_text ?? ""
+    }
 
 
     // MARK: - Table view data source
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 5
+        return 6
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -148,8 +311,16 @@ class PokemonTableViewController: UITableViewController {
             fetchDescriptionAndConfigure(cell: cell, forItemAt: indexPath)
             
             return cell
-        } else if indexPath.row == 4 {
+        } else if indexPath.row == 5 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "PokemonAbilities", for: indexPath) as! PokemonAbilitesTableViewCell
+            
+            fetchAbilitesAndConfigure(cell: cell, forItemAt: indexPath)
+            
+            return cell
+        } else if indexPath.row == 4 {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "PokemonStats", for: indexPath) as! PokemonStatsTableViewCell
+            
+            fetchStatsAndConfigure(cell: cell, forItemAt: indexPath)
             
             return cell
         } else {

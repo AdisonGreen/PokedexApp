@@ -7,12 +7,12 @@
 
 import UIKit
 
-class PokedexMainScreenTableViewController: UITableViewController {
+class PokedexMainScreenTableViewController: UITableViewController, UISearchBarDelegate {
     
     var items = [StoreAllPokemon]()
     
     var pokemonInstance = PokemonInfo()
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         fetchMatchingItems()
@@ -43,7 +43,6 @@ class PokedexMainScreenTableViewController: UITableViewController {
     // MARK: - Table view data source
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
         return items.count
     }
     
