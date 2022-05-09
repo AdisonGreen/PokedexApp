@@ -108,9 +108,7 @@ class PokemonCollectionViewController: UICollectionViewController, UISearchResul
     
         // Configure the cell
         cell.pokemonNameLabel.text = filteredItems[indexPath.item].name.capitalizingFirstLetter()
-//        items[indexPath.item].isEnglish = indexPath.rowvar isEnglish: Bool {
-        return name == "en"
-    }
+//        items[indexPath.item].isEnglish = indexPath.row
         
         return cell
     }
