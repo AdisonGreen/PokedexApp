@@ -10,8 +10,11 @@ import UIKit
 
 struct StoreAllPokemon: Codable {
     var name: String
-    var indexPathForMon: Int {
-        return 0
+    var url: String
+    var pokedexNumber: Int {
+        let pokemonNum = url.replacingOccurrences(of: "/", with: "")
+        let someNum = pokemonNum.replacingOccurrences(of: "https:pokeapi.coapiv2pokemon-species", with: "")
+        return Int(someNum)!
     }
 }
 

@@ -13,10 +13,10 @@ class PokemonCollectionViewController: UICollectionViewController, UISearchResul
     
     let searchController = UISearchController()
     
+    var pokemonDexNum = 1
+    
     var items = [StoreAllPokemon]()
     lazy var filteredItems: [StoreAllPokemon] = self.items
-    
-    let myItems = ["Some", "Dude"]
     
     var pokemonInstance = PokemonInfo()
 
@@ -72,6 +72,8 @@ class PokemonCollectionViewController: UICollectionViewController, UISearchResul
         return layout
     }
     
+    
+    
     func fetchAllPokemon() {
         self.items = []
         self.collectionView.reloadData()
@@ -94,7 +96,7 @@ class PokemonCollectionViewController: UICollectionViewController, UISearchResul
             return nil
         }
         
-        return PokemonTableViewController(coder: coder, pokedexNumber: (indexPath.row + 1))
+        return PokemonTableViewController(coder: coder, pokedexNumber: filteredItems[indexPath.row].pokedexNumber)
     }
 
     // MARK: UICollectionViewDataSource
@@ -108,7 +110,6 @@ class PokemonCollectionViewController: UICollectionViewController, UISearchResul
     
         // Configure the cell
         cell.pokemonNameLabel.text = filteredItems[indexPath.item].name.capitalizingFirstLetter()
-//        items[indexPath.item].isEnglish = indexPath.row
         
         return cell
     }

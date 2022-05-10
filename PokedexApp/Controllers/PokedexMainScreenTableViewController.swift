@@ -59,6 +59,6 @@ class PokedexMainScreenTableViewController: UITableViewController, UISearchBarDe
             return nil
         }
         
-        return PokemonTableViewController(coder: coder, pokedexNumber: (indexPath.row + 1))
+        return PokemonTableViewController(coder: coder, pokedexNumber: indexPath.row + 1)
     }
 }
