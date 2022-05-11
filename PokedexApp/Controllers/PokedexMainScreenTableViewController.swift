@@ -10,7 +10,6 @@ import UIKit
 class PokedexMainScreenTableViewController: UITableViewController, UISearchBarDelegate {
     
     var items = [StoreAllPokemon]()
-    
     var pokemonInstance = PokemonInfo()
     
     override func viewDidLoad() {

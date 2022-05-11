@@ -13,15 +13,18 @@ class PokemonCollectionViewController: UICollectionViewController, UISearchResul
     
     let searchController = UISearchController()
     
-    var pokemonDexNum = 1
+    let pokemonSpeciesInstance = PokemonSpecies()
     
     var items = [StoreAllPokemon]()
     lazy var filteredItems: [StoreAllPokemon] = self.items
+    var imageItems = [UIImage]()
+    lazy var filteredImages: [UIImage] = self.imageItems
     
     var pokemonInstance = PokemonInfo()
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        fetchImage()
         fetchAllPokemon()
         navigationItem.searchController = searchController
         searchController.obscuresBackgroundDuringPresentation = false
@@ -72,7 +75,22 @@ class PokemonCollectionViewController: UICollectionViewController, UISearchResul
         return layout
     }
     
-    
+    func fetchImage() {
+        let howManyMons = 898
+        for number in 0...howManyMons {
+            let pokemonImageInstance = PokemonSprites(pokedexNumber: number)
+            pokemonImageInstance.fetchItems { result in
+                switch result {
+                case .success(let info):
+                    DispatchQueue.main.async {
+                        self.imageItems.append(info)
+                    }
+                case .failure(let error):
+                    print(error)
+                }
+            }
+        }
+    }
     
     func fetchAllPokemon() {
         self.items = []
@@ -110,6 +128,8 @@ class PokemonCollectionViewController: UICollectionViewController, UISearchResul
     
         // Configure the cell
         cell.pokemonNameLabel.text = filteredItems[indexPath.item].name.capitalizingFirstLetter()
+        
+        cell.pokemonImageView.image = UIImage(named: "\(filteredItems[indexPath.row].pokedexNumber)")
         
         return cell
     }

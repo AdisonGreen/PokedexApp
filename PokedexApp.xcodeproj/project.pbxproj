@@ -97,12 +97,12 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		B340207B28296AD100255AE1 /* Don't Look in Hear */ = {
+		B340207B28296AD100255AE1 /* Don't Look in Here */ = {
 			isa = PBXGroup;
 			children = (
 				B340207928296AC800255AE1 /* TheFileIFear.swift */,
 			);
-			path = "Don't Look in Hear";
+			path = "Don't Look in Here";
 			sourceTree = "<group>";
 		};
 		B398366827DB9702003FE150 = {
@@ -130,7 +130,7 @@
 				B398369427DBB0A9003FE150 /* Controllers */,
 				B398369527DBB182003FE150 /* API */,
 				B398369627DBB192003FE150 /* Other */,
-				B340207B28296AD100255AE1 /* Don't Look in Hear */,
+				B340207B28296AD100255AE1 /* Don't Look in Here */,
 				B398367D27DB9706003FE150 /* Assets.xcassets */,
 				B398367F27DB9706003FE150 /* LaunchScreen.storyboard */,
 				B398368227DB9706003FE150 /* Info.plist */,

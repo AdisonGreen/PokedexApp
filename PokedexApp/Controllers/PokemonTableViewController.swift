@@ -35,7 +35,7 @@ class PokemonTableViewController: UITableViewController {
                     
                     if info.abilities.count == 1 {
                         cell.firstAbilityNameLabel.text = info.abilities.first?.ability.name.capitalizingFirstLetter()
-                        cell.firstAbilityNameLabel.textColor = .systemMint
+                        cell.firstAbilityNameLabel.textColor = .systemGreen
                         
                         if info.abilities.first?.is_hidden == true {
                             cell.firstAbilityNameLabel.text! += " - Hidden Ability"
@@ -61,7 +61,7 @@ class PokemonTableViewController: UITableViewController {
                         cell.thirdAbilityDescriptionLabel.isHidden = true
                     } else if info.abilities.count == 2 {
                         cell.firstAbilityNameLabel.text = info.abilities.first?.ability.name.capitalizingFirstLetter()
-                        cell.firstAbilityNameLabel.textColor = .systemMint
+                        cell.firstAbilityNameLabel.textColor = .systemGreen
                         
                         let abilityDescriptionsInstance = AbilityDescriptions()
                         abilityDescriptionsInstance.fetchItems(url: (info.abilities.first?.ability.url)!) { descriptionResult in
@@ -78,7 +78,7 @@ class PokemonTableViewController: UITableViewController {
                         }
                         
                         cell.secondAbilityNameLabel.text = info.abilities.last?.ability.name.capitalizingFirstLetter()
-                        cell.secondAbilityNameLabel.textColor = .systemMint
+                        cell.secondAbilityNameLabel.textColor = .systemGreen
                         
                         abilityDescriptionsInstance.fetchItems(url: (info.abilities.last?.ability.url)!) { descriptionResult in
                             switch descriptionResult {
@@ -102,7 +102,7 @@ class PokemonTableViewController: UITableViewController {
                         cell.thirdAbilityDescriptionLabel.isHidden = true
                     } else {
                         cell.firstAbilityNameLabel.text = info.abilities[0].ability.name.capitalizingFirstLetter()
-                        cell.firstAbilityNameLabel.textColor = .systemMint
+                        cell.firstAbilityNameLabel.textColor = .systemGreen
                         
                         let abilityDescriptionsInstance = AbilityDescriptions()
                         abilityDescriptionsInstance.fetchItems(url: info.abilities[0].ability.url) { descriptionResult in
@@ -118,7 +118,7 @@ class PokemonTableViewController: UITableViewController {
                         }
                         
                         cell.secondAbilityNameLabel.text = info.abilities[1].ability.name.capitalizingFirstLetter()
-                        cell.secondAbilityNameLabel.textColor = .systemMint
+                        cell.secondAbilityNameLabel.textColor = .systemGreen
                         
                         abilityDescriptionsInstance.fetchItems(url: info.abilities[1].ability.url) { descriptionResult in
                             switch descriptionResult {
@@ -133,7 +133,7 @@ class PokemonTableViewController: UITableViewController {
                         }
                         
                         cell.thirdAbiltyNameLabel.text = info.abilities[2].ability.name.capitalizingFirstLetter()
-                        cell.thirdAbiltyNameLabel.textColor = .systemMint
+                        cell.thirdAbiltyNameLabel.textColor = .systemGreen
                         
                         abilityDescriptionsInstance.fetchItems(url: info.abilities[2].ability.url) { descriptionResult in
                             switch descriptionResult {
@@ -214,18 +214,8 @@ class PokemonTableViewController: UITableViewController {
         }
     }
     
-    func fetchImageAndConfigure(cell: PokemonImageTableViewCell, forItemAt indexPath: IndexPath) {
-                let pokemonSpriteInstance = PokemonSprites(pokedexNumber: pokedexNumber)
-                pokemonSpriteInstance.fetchItems { result in
-                    switch result {
-                    case .success(let info):
-                        DispatchQueue.main.async {
-                            cell.pokemonImage.image = info
-                        }
-                    case .failure(let error):
-                        print(error)
-                    }
-                }
+    func fetchImageAndConfigure(cell: PokemonImageTableViewCell, pokemonNum: Int) {
+        cell.pokemonImage.image = UIImage(named: "\(pokemonNum)")
     }
     
     func fetchDescriptionAndConfigure(cell: PokemonDescriptionTableViewCell, forItemAt indexPath: IndexPath) {
@@ -296,7 +286,7 @@ class PokemonTableViewController: UITableViewController {
         } else if indexPath.row == 1 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "PokemonImage", for: indexPath) as! PokemonImageTableViewCell
             
-            fetchImageAndConfigure(cell: cell, forItemAt: indexPath)
+            fetchImageAndConfigure(cell: cell, pokemonNum: pokedexNumber)
             
             return cell
         } else if indexPath.row == 2 {

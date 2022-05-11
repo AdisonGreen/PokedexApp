@@ -8,10 +8,14 @@
 import Foundation
 import UIKit
 
-//struct StorePokemonSpecies: Decodable {
-//    var pokedex_numbers: [pokedexNums]
-//}
-//
-//struct pokedexNums: Decodable {
-//    var entry_number: Int
-//}
+struct StorePokemonSpecies: Codable {
+    var varieties: [Varieties]
+}
+
+struct Varieties: Codable {
+    var pokemon: PokemonFromVarieties
+}
+
+struct PokemonFromVarieties: Codable {
+    var url: String
+}
