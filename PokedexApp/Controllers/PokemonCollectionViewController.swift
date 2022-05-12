@@ -9,7 +9,12 @@ import UIKit
 
 private let reuseIdentifier = "CollectionPokemonCell"
 
+private let otherIdentifier = "OtherCell"
+
 class PokemonCollectionViewController: UICollectionViewController, UISearchResultsUpdating {
+    @IBOutlet weak var layoutButton: UIBarButtonItem!
+    
+    var layout: [Layout: UICollectionViewLayout] = [:]
     
     let searchController = UISearchController()
     
@@ -21,15 +26,46 @@ class PokemonCollectionViewController: UICollectionViewController, UISearchResul
     lazy var filteredImages: [UIImage] = self.imageItems
     
     var pokemonInstance = PokemonInfo()
+    
+    enum Layout {
+        case grid
+        case column
+    }
+    
+    var activeLayout: Layout = .grid {
+        didSet {
+            if let layout = layout[activeLayout] {
+                self.collectionView.reloadItems(at: self.collectionView.indexPathsForVisibleItems)
+                
+                collectionView.setCollectionViewLayout(layout, animated: true) { (_) in
+                    switch self.activeLayout {
+                    case .grid:
+                        self.layoutButton.image = UIImage(systemName: "square.grid.2x2")
+                    case .column:
+                        self.layoutButton.image = UIImage(systemName: "rectangle.grid.1x2")
+                    }
+                }
+                
+            }
+        }
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        fetchImage()
+        
         fetchAllPokemon()
+        
+        layout[.grid] = generateLayout()
+        layout[.column] = generateOtherLayout()
+        
+        if let layout = layout[activeLayout] {
+            collectionView.collectionViewLayout = layout
+        }
+        
         navigationItem.searchController = searchController
         searchController.obscuresBackgroundDuringPresentation = false
         searchController.searchResultsUpdater = self
-        collectionView.setCollectionViewLayout(generateLayout(), animated: false)
+//        collectionView.setCollectionViewLayout(generateLayout(), animated: false)
     }
     
     func updateSearchResults(for searchController: UISearchController) {
@@ -55,8 +91,7 @@ class PokemonCollectionViewController: UICollectionViewController, UISearchResul
             collectionView.reloadData()
     }
     
-    func generateLayout() -> UICollectionViewLayout {
-        
+    func generateOtherLayout() -> UICollectionViewLayout {
         let spacing: CGFloat = 10
         
         let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .fractionalHeight(1.0))
@@ -64,7 +99,7 @@ class PokemonCollectionViewController: UICollectionViewController, UISearchResul
         item.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: spacing, bottom: 0, trailing: spacing)
         
         let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .absolute(70.0))
-        let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitem: item, count: 3)
+        let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitem: item, count: 1)
         
         let section = NSCollectionLayoutSection(group: group)
         
@@ -75,21 +110,23 @@ class PokemonCollectionViewController: UICollectionViewController, UISearchResul
         return layout
     }
     
-    func fetchImage() {
-        let howManyMons = 898
-        for number in 0...howManyMons {
-            let pokemonImageInstance = PokemonSprites(pokedexNumber: number)
-            pokemonImageInstance.fetchItems { result in
-                switch result {
-                case .success(let info):
-                    DispatchQueue.main.async {
-                        self.imageItems.append(info)
-                    }
-                case .failure(let error):
-                    print(error)
-                }
-            }
-        }
+    func generateLayout() -> UICollectionViewLayout {
+        let spacing: CGFloat = 10
+        
+        let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .fractionalHeight(1.0))
+        let item = NSCollectionLayoutItem(layoutSize: itemSize)
+        item.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: spacing, bottom: 0, trailing: spacing)
+        
+        let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .absolute(70.0))
+        let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitem: item, count: 5)
+        
+        let section = NSCollectionLayoutSection(group: group)
+        
+        section.interGroupSpacing = spacing
+        
+        let layout = UICollectionViewCompositionalLayout(section: section)
+        
+        return layout
     }
     
     func fetchAllPokemon() {
@@ -109,6 +146,23 @@ class PokemonCollectionViewController: UICollectionViewController, UISearchResul
         }
     }
     
+    @IBAction func switchLayouts(_ sender: UIBarButtonItem) {
+        switch activeLayout {
+        case .grid:
+            activeLayout = .column
+        case .column:
+            activeLayout = .grid
+        }
+    }
+    
+    @IBSegueAction func pokemonOtherTapped(_ coder: NSCoder, sender: Any?) -> PokemonTableViewController? {
+        guard let cell = sender as? UICollectionViewCell, let indexPath = collectionView.indexPath(for: cell) else {
+            return nil
+        }
+        
+        return PokemonTableViewController(coder: coder, pokedexNumber: filteredItems[indexPath.row].pokedexNumber)
+    }
+    
     @IBSegueAction func pokemonCollectionTapped(_ coder: NSCoder, sender: Any?) -> PokemonTableViewController? {
         guard let cell = sender as? UICollectionViewCell, let indexPath = collectionView.indexPath(for: cell) else {
             return nil
@@ -124,12 +178,20 @@ class PokemonCollectionViewController: UICollectionViewController, UISearchResul
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! PokemonCollectionViewCell
+        let identifier = activeLayout == .grid ? reuseIdentifier : otherIdentifier
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: identifier, for: indexPath) as! PokemonCollectionViewCell
     
         // Configure the cell
-        cell.pokemonNameLabel.text = filteredItems[indexPath.item].name.capitalizingFirstLetter()
-        
-        cell.pokemonImageView.image = UIImage(named: "\(filteredItems[indexPath.row].pokedexNumber)")
+        if identifier == reuseIdentifier {
+            cell.pokemonNameLabel.isHidden = true
+            
+            cell.pokemonImageView.image = UIImage(named: "\(filteredItems[indexPath.row].pokedexNumber)")
+        } else {
+            cell.pokemonNameLabel.isHidden = false
+            cell.pokemonNameLabel.text = filteredItems[indexPath.item].name.capitalizingFirstLetter()
+            
+            cell.pokemonImageView.image = UIImage(named: "\(filteredItems[indexPath.row].pokedexNumber)")
+        }
         
         return cell
     }

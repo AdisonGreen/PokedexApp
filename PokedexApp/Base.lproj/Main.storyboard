@@ -605,7 +605,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1Io-nA-JOz" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2166.666666666667" y="136.60714285714286"/>
+            <point key="canvasLocation" x="2207" y="448"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="zjI-Rk-UcC">
@@ -668,40 +668,44 @@
                                     </constraints>
                                 </collectionViewCellContentView>
                                 <connections>
-                                    <outlet property="pokemonImageView" destination="zyx-JI-wS7" id="DJi-Eb-VUK"/>
-                                    <outlet property="pokemonNameLabel" destination="EJF-pi-Z7a" id="GqP-e1-s5T"/>
+                                    <outlet property="pokemonImageView" destination="zyx-JI-wS7" id="aiK-0N-KrA"/>
+                                    <outlet property="pokemonNameLabel" destination="EJF-pi-Z7a" id="Agx-S2-Lz5"/>
                                     <segue destination="W9n-Ps-GhY" kind="show" destinationCreationSelector="pokemonCollectionTapped:sender:" id="uT2-cK-TIB"/>
                                 </connections>
                             </collectionViewCell>
-                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="OtherCell" id="tuB-2w-mBm">
-                                <rect key="frame" x="56.5" y="138.5" width="301.5" height="128"/>
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="OtherCell" id="tuB-2w-mBm" customClass="PokemonCollectionViewCell" customModule="PokedexApp" customModuleProvider="target">
+                                <rect key="frame" x="57" y="138.5" width="300" height="20.5"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="StY-j5-RrA">
-                                    <rect key="frame" x="0.0" y="0.0" width="301.5" height="128"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="300" height="20.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <stackView opaque="NO" contentMode="scaleToFill" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="joP-3v-5W3">
-                                            <rect key="frame" x="0.0" y="0.0" width="301.5" height="128"/>
-                                            <subviews>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="872-6t-9PJ">
-                                                    <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
-                                                </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AZN-eS-l95">
-                                                    <rect key="frame" x="260" y="0.0" width="41.5" height="128"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                            </subviews>
-                                        </stackView>
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="872-6t-9PJ">
+                                            <rect key="frame" x="0.0" y="0.0" width="0.0" height="20.5"/>
+                                        </imageView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AZN-eS-l95">
+                                            <rect key="frame" x="0.0" y="0.0" width="300" height="20.5"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstItem="joP-3v-5W3" firstAttribute="top" secondItem="StY-j5-RrA" secondAttribute="top" id="2wv-VE-eZP"/>
-                                        <constraint firstItem="joP-3v-5W3" firstAttribute="leading" secondItem="StY-j5-RrA" secondAttribute="leading" id="aKr-9v-bNe"/>
-                                        <constraint firstAttribute="trailing" secondItem="joP-3v-5W3" secondAttribute="trailing" id="qLc-0X-RRk"/>
-                                        <constraint firstAttribute="bottom" secondItem="joP-3v-5W3" secondAttribute="bottom" id="ugs-6c-Fw0"/>
+                                        <constraint firstItem="AZN-eS-l95" firstAttribute="top" secondItem="StY-j5-RrA" secondAttribute="top" id="2Kj-tu-q5Z"/>
+                                        <constraint firstAttribute="trailing" secondItem="AZN-eS-l95" secondAttribute="trailing" id="RFH-sQ-ROy"/>
+                                        <constraint firstItem="872-6t-9PJ" firstAttribute="leading" secondItem="StY-j5-RrA" secondAttribute="leading" id="Wub-UP-Djz"/>
+                                        <constraint firstAttribute="bottom" secondItem="872-6t-9PJ" secondAttribute="bottom" id="c79-Rt-Ok7"/>
+                                        <constraint firstItem="AZN-eS-l95" firstAttribute="centerX" secondItem="StY-j5-RrA" secondAttribute="centerX" id="hIo-3J-ncv"/>
+                                        <constraint firstAttribute="trailing" secondItem="872-6t-9PJ" secondAttribute="trailing" constant="300" id="mCd-Ri-QiA"/>
+                                        <constraint firstItem="872-6t-9PJ" firstAttribute="top" secondItem="StY-j5-RrA" secondAttribute="top" id="v9m-sz-M4A"/>
+                                        <constraint firstAttribute="bottom" secondItem="AZN-eS-l95" secondAttribute="bottom" id="z29-GD-aPL"/>
                                     </constraints>
                                 </collectionViewCellContentView>
+                                <connections>
+                                    <outlet property="pokemonImageView" destination="872-6t-9PJ" id="4aJ-hL-U7v"/>
+                                    <outlet property="pokemonNameLabel" destination="AZN-eS-l95" id="7Ty-x4-kZZ"/>
+                                    <segue destination="W9n-Ps-GhY" kind="show" destinationCreationSelector="pokemonOtherTapped:sender:" id="flx-mX-N2z"/>
+                                </connections>
                             </collectionViewCell>
                         </cells>
                         <connections>
@@ -709,7 +713,16 @@
                             <outlet property="delegate" destination="DE9-nq-hGY" id="5pu-RD-dWM"/>
                         </connections>
                     </collectionView>
-                    <navigationItem key="navigationItem" title="Pokedex" id="wgQ-ty-kZn"/>
+                    <navigationItem key="navigationItem" title="Pokedex" id="wgQ-ty-kZn">
+                        <barButtonItem key="rightBarButtonItem" image="square.grid.2x2" catalog="system" id="YnT-gg-bn1">
+                            <connections>
+                                <action selector="switchLayouts:" destination="DE9-nq-hGY" id="0sb-Wd-PcX"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="layoutButton" destination="YnT-gg-bn1" id="7ho-UT-Vcc"/>
+                    </connections>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rLX-A0-zX0" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -735,9 +748,10 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="uT2-cK-TIB"/>
+        <segue reference="flx-mX-N2z"/>
     </inferredMetricsTieBreakers>
     <resources>
+        <image name="square.grid.2x2" catalog="system" width="128" height="114"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
