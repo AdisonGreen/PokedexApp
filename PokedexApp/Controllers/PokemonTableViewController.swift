@@ -24,6 +24,12 @@ class PokemonTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.separatorStyle = .none
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
+            self.tableView.reloadData()
+        }
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+            self.tableView.reloadData()
+        }
     }
     
     func fetchAbilitesAndConfigure(cell: PokemonAbilitesTableViewCell, forItemAt indexPath: IndexPath) {
@@ -155,7 +161,7 @@ class PokemonTableViewController: UITableViewController {
                             cell.thirdAbiltyNameLabel.text! += " - Hidden Ability"
                         }
                     }
-                    self.tableView.reloadData()
+//                    self.tableView.reloadData()
             }
                 
             case .failure(let error):
@@ -225,7 +231,7 @@ class PokemonTableViewController: UITableViewController {
             case .success(let info):
                 DispatchQueue.main.async {
                     cell.descriptionLabel.text = self.checkDescription(info: info).replacingOccurrences(of: "\n", with: " ")
-                    self.tableView.reloadData()
+//                    self.tableView.reloadData()
                 }
             case .failure(let error):
                 print(error)
@@ -276,10 +282,10 @@ class PokemonTableViewController: UITableViewController {
             return .systemYellow
         } else if stat < 150 { // 100 to 149
             return .systemGreen
-        } else  if stat < 250 { // 150 to 255
+        } else  if stat < 200 { // 150 to 199
             return .systemTeal
-        } else {
-            return .systemTeal
+        } else { // 200 to 255
+            return .cyan
         }
     }
     
@@ -294,7 +300,6 @@ class PokemonTableViewController: UITableViewController {
             return entries.language.isEnglish
         }?.flavor_text ?? ""
     }
-
 
     // MARK: - Table view data source
 
