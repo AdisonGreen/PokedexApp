@@ -269,13 +269,13 @@ class PokemonTableViewController: UITableViewController {
     
     func checkStatColor(stat: Int) -> UIColor {
         if stat < 40 { // 1 to 39
-            return .red
+            return .systemRed
         } else if stat < 80 { // 40 to 79
-            return .orange
+            return .systemOrange
         } else if stat < 100 { // 80 to 99
-            return .yellow
+            return .systemYellow
         } else if stat < 150 { // 100 to 149
-            return .green
+            return .systemGreen
         } else  if stat < 250 { // 150 to 255
             return .systemTeal
         } else {
