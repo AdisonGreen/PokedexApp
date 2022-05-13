@@ -23,7 +23,7 @@ class PokemonCollectionViewController: UICollectionViewController, UISearchResul
     var items = [StoreAllPokemon]()
     lazy var filteredItems: [StoreAllPokemon] = self.items
     var imageItems = [UIImage]()
-    lazy var filteredImages: [UIImage] = self.imageItems
+//    lazy var filteredImages: [UIImage] = self.imageItems
     
     var pokemonInstance = PokemonInfo()
     
@@ -51,9 +51,9 @@ class PokemonCollectionViewController: UICollectionViewController, UISearchResul
     }
 
     override func viewDidLoad() {
-        super.viewDidLoad()
-        
         fetchAllPokemon()
+        
+        super.viewDidLoad()
         
         layout[.grid] = generateLayout()
         layout[.column] = generateOtherLayout()
@@ -65,7 +65,6 @@ class PokemonCollectionViewController: UICollectionViewController, UISearchResul
         navigationItem.searchController = searchController
         searchController.obscuresBackgroundDuringPresentation = false
         searchController.searchResultsUpdater = self
-//        collectionView.setCollectionViewLayout(generateLayout(), animated: false)
     }
     
     func updateSearchResults(for searchController: UISearchController) {
@@ -131,13 +130,13 @@ class PokemonCollectionViewController: UICollectionViewController, UISearchResul
     
     func fetchAllPokemon() {
         self.items = []
-        self.collectionView.reloadData()
         
         pokemonInstance.fetchItems { result in
             switch result {
             case .success(let info):
                 DispatchQueue.main.async {
                     self.items = info
+                    self.filteredItems = self.items
                     self.collectionView.reloadData()
                 }
             case .failure(let error):

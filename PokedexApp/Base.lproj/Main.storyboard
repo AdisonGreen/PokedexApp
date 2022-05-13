@@ -317,27 +317,24 @@
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="PokemonDescription" id="zm8-qz-yDC" customClass="PokemonDescriptionTableViewCell" customModule="PokedexApp" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="361.5" width="414" height="68.5"/>
+                                <rect key="frame" x="0.0" y="361.5" width="414" height="37"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="zm8-qz-yDC" id="iqO-4j-oEh">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="68.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="37"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Description" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MuB-Re-THE">
-                                            <rect key="frame" x="8" y="-8" width="398" height="84.5"/>
-                                            <constraints>
-                                                <constraint firstAttribute="height" constant="84" id="L4g-G5-ZEg"/>
-                                            </constraints>
+                                            <rect key="frame" x="8" y="8" width="398" height="21"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstItem="MuB-Re-THE" firstAttribute="leading" secondItem="iqO-4j-oEh" secondAttribute="leading" constant="8" id="1oO-SN-nwO"/>
-                                        <constraint firstAttribute="bottom" secondItem="MuB-Re-THE" secondAttribute="bottom" constant="-8" id="AQ8-Rh-zcF"/>
-                                        <constraint firstItem="MuB-Re-THE" firstAttribute="top" secondItem="iqO-4j-oEh" secondAttribute="top" constant="-8" id="W2C-2h-lF5"/>
-                                        <constraint firstAttribute="trailing" secondItem="MuB-Re-THE" secondAttribute="trailing" constant="8" id="nUN-1h-AgL"/>
+                                        <constraint firstAttribute="bottom" secondItem="MuB-Re-THE" secondAttribute="bottom" constant="8" id="5rf-25-AHK"/>
+                                        <constraint firstItem="MuB-Re-THE" firstAttribute="top" secondItem="iqO-4j-oEh" secondAttribute="top" constant="8" id="GK3-ih-MRb"/>
+                                        <constraint firstItem="MuB-Re-THE" firstAttribute="leading" secondItem="iqO-4j-oEh" secondAttribute="leading" constant="8" id="PSr-mY-Ftm"/>
+                                        <constraint firstAttribute="trailing" secondItem="MuB-Re-THE" secondAttribute="trailing" constant="8" id="hav-OH-xUH"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
@@ -345,7 +342,7 @@
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="PokemonStats" id="1eF-R0-ncC" customClass="PokemonStatsTableViewCell" customModule="PokedexApp" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="430" width="414" height="227.5"/>
+                                <rect key="frame" x="0.0" y="398.5" width="414" height="227.5"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="1eF-R0-ncC" id="iQ9-Tp-6hL">
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="227.5"/>
@@ -500,14 +497,14 @@
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="PokemonAbilities" id="A3W-g0-67i" customClass="PokemonAbilitesTableViewCell" customModule="PokedexApp" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="657.5" width="414" height="255"/>
+                                <rect key="frame" x="0.0" y="626" width="414" height="193.5"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="A3W-g0-67i" id="7Bn-Xa-DH6">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="255"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="193.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="T9L-2a-HuC">
-                                            <rect key="frame" x="8" y="8" width="398" height="239"/>
+                                            <rect key="frame" x="8" y="8" width="398" height="177.5"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Abilities" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FSL-Fn-rQf">
                                                     <rect key="frame" x="0.0" y="0.0" width="398" height="30.5"/>
@@ -516,7 +513,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="GHe-uS-M0O">
-                                                    <rect key="frame" x="0.0" y="38.5" width="398" height="61.5"/>
+                                                    <rect key="frame" x="0.0" y="38.5" width="398" height="41"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1st Ability Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ear-NA-rCe">
                                                             <rect key="frame" x="0.0" y="0.0" width="398" height="20.5"/>
@@ -525,10 +522,7 @@
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1st Ability Description" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mVs-w9-Obw">
-                                                            <rect key="frame" x="0.0" y="20.5" width="398" height="41"/>
-                                                            <constraints>
-                                                                <constraint firstAttribute="height" constant="41" id="oC8-RU-GXq"/>
-                                                            </constraints>
+                                                            <rect key="frame" x="0.0" y="20.5" width="398" height="20.5"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
@@ -536,7 +530,7 @@
                                                     </subviews>
                                                 </stackView>
                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="6zA-7L-7kj">
-                                                    <rect key="frame" x="0.0" y="108" width="398" height="61.5"/>
+                                                    <rect key="frame" x="0.0" y="87.5" width="398" height="41"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2nd Ability Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8Pl-cR-ue9">
                                                             <rect key="frame" x="0.0" y="0.0" width="398" height="20.5"/>
@@ -545,10 +539,7 @@
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2nd AbilityDescription" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gkV-ld-fQX">
-                                                            <rect key="frame" x="0.0" y="20.5" width="398" height="41"/>
-                                                            <constraints>
-                                                                <constraint firstAttribute="height" constant="41" id="D0M-Jd-Z7i"/>
-                                                            </constraints>
+                                                            <rect key="frame" x="0.0" y="20.5" width="398" height="20.5"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
@@ -556,7 +547,7 @@
                                                     </subviews>
                                                 </stackView>
                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="2Gf-gv-DXl">
-                                                    <rect key="frame" x="0.0" y="177.5" width="398" height="61.5"/>
+                                                    <rect key="frame" x="0.0" y="136.5" width="398" height="41"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="3rd Ability Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="l1w-5y-qgn">
                                                             <rect key="frame" x="0.0" y="0.0" width="398" height="20.5"/>
@@ -565,10 +556,7 @@
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="3rd Ability Description" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uPi-nk-UUK">
-                                                            <rect key="frame" x="0.0" y="20.5" width="398" height="41"/>
-                                                            <constraints>
-                                                                <constraint firstAttribute="height" constant="41" id="nTG-qX-P1S"/>
-                                                            </constraints>
+                                                            <rect key="frame" x="0.0" y="20.5" width="398" height="20.5"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>

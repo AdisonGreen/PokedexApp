@@ -155,6 +155,7 @@ class PokemonTableViewController: UITableViewController {
                             cell.thirdAbiltyNameLabel.text! += " - Hidden Ability"
                         }
                     }
+                    self.tableView.reloadData()
             }
                 
             case .failure(let error):
@@ -203,7 +204,6 @@ class PokemonTableViewController: UITableViewController {
             switch result {
             case .success(let info):
                 DispatchQueue.main.async {
-                    
                     self.navigationItem.title = info.name.capitalizingFirstLetter()
                     cell.nameLabel.text = info.name.capitalizingFirstLetter()
                     cell.pokedexNumberLabel.text = "# \(self.pokedexNumber)"
@@ -225,7 +225,7 @@ class PokemonTableViewController: UITableViewController {
             case .success(let info):
                 DispatchQueue.main.async {
                     cell.descriptionLabel.text = self.checkDescription(info: info).replacingOccurrences(of: "\n", with: " ")
-                    
+                    self.tableView.reloadData()
                 }
             case .failure(let error):
                 print(error)
@@ -240,11 +240,22 @@ class PokemonTableViewController: UITableViewController {
             case.success(let info):
                 DispatchQueue.main.async {
                     cell.hpStatLabel.text = info.stats[0].base_stat.description
+                    cell.hpStatLabel.textColor = self.checkStatColor(stat: info.stats[0].base_stat)
+                    
                     cell.attStatLabel.text = info.stats[1].base_stat.description
+                    cell.attStatLabel.textColor = self.checkStatColor(stat: info.stats[1].base_stat)
+                    
                     cell.defStatLabel.text = info.stats[2].base_stat.description
+                    cell.defStatLabel.textColor = self.checkStatColor(stat: info.stats[2].base_stat)
+                    
                     cell.sAttStatLabel.text = info.stats[3].base_stat.description
+                    cell.sAttStatLabel.textColor = self.checkStatColor(stat: info.stats[3].base_stat)
+                    
                     cell.sDefStatLabel.text = info.stats[4].base_stat.description
+                    cell.sDefStatLabel.textColor = self.checkStatColor(stat: info.stats[4].base_stat)
+                    
                     cell.speStatLabel.text = info.stats[5].base_stat.description
+                    cell.speStatLabel.textColor = self.checkStatColor(stat: info.stats[5].base_stat)
                     
                     let total = (info.stats[0].base_stat + info.stats[1].base_stat) + (info.stats[2].base_stat + info.stats[3].base_stat) + (info.stats[4].base_stat + info.stats[5].base_stat)
                     
@@ -253,6 +264,22 @@ class PokemonTableViewController: UITableViewController {
             case.failure(let error):
                 print(error)
             }
+        }
+    }
+    
+    func checkStatColor(stat: Int) -> UIColor {
+        if stat < 40 { // 1 to 39
+            return .red
+        } else if stat < 80 { // 40 to 79
+            return .orange
+        } else if stat < 100 { // 80 to 99
+            return .yellow
+        } else if stat < 150 { // 100 to 149
+            return .green
+        } else  if stat < 250 { // 150 to 255
+            return .systemTeal
+        } else {
+            return .systemTeal
         }
     }
     
