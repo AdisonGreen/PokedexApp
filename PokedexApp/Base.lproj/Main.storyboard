@@ -341,8 +341,94 @@
                                     <outlet property="descriptionLabel" destination="MuB-Re-THE" id="ZIG-qs-0eI"/>
                                 </connections>
                             </tableViewCell>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="PokemonAbilities" id="A3W-g0-67i" customClass="PokemonAbilitesTableViewCell" customModule="PokedexApp" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="398.5" width="414" height="193.5"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="A3W-g0-67i" id="7Bn-Xa-DH6">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="193.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="T9L-2a-HuC">
+                                            <rect key="frame" x="8" y="8" width="398" height="177.5"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Abilities" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FSL-Fn-rQf">
+                                                    <rect key="frame" x="0.0" y="0.0" width="398" height="30.5"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                                    <color key="textColor" systemColor="systemTealColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="GHe-uS-M0O">
+                                                    <rect key="frame" x="0.0" y="38.5" width="398" height="41"/>
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1st Ability Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ear-NA-rCe">
+                                                            <rect key="frame" x="0.0" y="0.0" width="398" height="20.5"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1st Ability Description" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mVs-w9-Obw">
+                                                            <rect key="frame" x="0.0" y="20.5" width="398" height="20.5"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                </stackView>
+                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="6zA-7L-7kj">
+                                                    <rect key="frame" x="0.0" y="87.5" width="398" height="41"/>
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2nd Ability Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8Pl-cR-ue9">
+                                                            <rect key="frame" x="0.0" y="0.0" width="398" height="20.5"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2nd AbilityDescription" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gkV-ld-fQX">
+                                                            <rect key="frame" x="0.0" y="20.5" width="398" height="20.5"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                </stackView>
+                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="2Gf-gv-DXl">
+                                                    <rect key="frame" x="0.0" y="136.5" width="398" height="41"/>
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="3rd Ability Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="l1w-5y-qgn">
+                                                            <rect key="frame" x="0.0" y="0.0" width="398" height="20.5"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="3rd Ability Description" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uPi-nk-UUK">
+                                                            <rect key="frame" x="0.0" y="20.5" width="398" height="20.5"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                </stackView>
+                                            </subviews>
+                                        </stackView>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="T9L-2a-HuC" firstAttribute="leading" secondItem="7Bn-Xa-DH6" secondAttribute="leading" constant="8" id="BRA-kJ-oed"/>
+                                        <constraint firstAttribute="bottom" secondItem="T9L-2a-HuC" secondAttribute="bottom" constant="8" id="b12-5u-cqs"/>
+                                        <constraint firstItem="T9L-2a-HuC" firstAttribute="top" secondItem="7Bn-Xa-DH6" secondAttribute="top" constant="8" id="iKQ-2V-8Ri"/>
+                                        <constraint firstAttribute="trailing" secondItem="T9L-2a-HuC" secondAttribute="trailing" constant="8" id="la0-qA-Y0E"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="firstAbilityDescriptionLabel" destination="mVs-w9-Obw" id="e4q-wn-1n3"/>
+                                    <outlet property="firstAbilityNameLabel" destination="ear-NA-rCe" id="DGv-J3-Jis"/>
+                                    <outlet property="secondAbilityDescriptionLabel" destination="gkV-ld-fQX" id="EGM-e1-riN"/>
+                                    <outlet property="secondAbilityNameLabel" destination="8Pl-cR-ue9" id="reF-ec-QKF"/>
+                                    <outlet property="thirdAbilityDescriptionLabel" destination="uPi-nk-UUK" id="4dY-Bk-jlC"/>
+                                    <outlet property="thirdAbiltyNameLabel" destination="l1w-5y-qgn" id="i9L-ev-zTu"/>
+                                </connections>
+                            </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="PokemonStats" id="1eF-R0-ncC" customClass="PokemonStatsTableViewCell" customModule="PokedexApp" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="398.5" width="414" height="227.5"/>
+                                <rect key="frame" x="0.0" y="592" width="414" height="227.5"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="1eF-R0-ncC" id="iQ9-Tp-6hL">
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="227.5"/>
@@ -494,92 +580,6 @@
                                     <outlet property="sDefStatLabel" destination="nAm-3o-SFb" id="Ws4-EI-Kwo"/>
                                     <outlet property="speStatLabel" destination="ldd-f1-Sgg" id="Ve7-ww-nK3"/>
                                     <outlet property="totalStatLabel" destination="LFq-hd-c6f" id="dH4-Rn-O2F"/>
-                                </connections>
-                            </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="PokemonAbilities" id="A3W-g0-67i" customClass="PokemonAbilitesTableViewCell" customModule="PokedexApp" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="626" width="414" height="193.5"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="A3W-g0-67i" id="7Bn-Xa-DH6">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="193.5"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <subviews>
-                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="T9L-2a-HuC">
-                                            <rect key="frame" x="8" y="8" width="398" height="177.5"/>
-                                            <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Abilities" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FSL-Fn-rQf">
-                                                    <rect key="frame" x="0.0" y="0.0" width="398" height="30.5"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="25"/>
-                                                    <color key="textColor" systemColor="systemTealColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="GHe-uS-M0O">
-                                                    <rect key="frame" x="0.0" y="38.5" width="398" height="41"/>
-                                                    <subviews>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1st Ability Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ear-NA-rCe">
-                                                            <rect key="frame" x="0.0" y="0.0" width="398" height="20.5"/>
-                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                            <nil key="textColor"/>
-                                                            <nil key="highlightedColor"/>
-                                                        </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1st Ability Description" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mVs-w9-Obw">
-                                                            <rect key="frame" x="0.0" y="20.5" width="398" height="20.5"/>
-                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                            <nil key="textColor"/>
-                                                            <nil key="highlightedColor"/>
-                                                        </label>
-                                                    </subviews>
-                                                </stackView>
-                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="6zA-7L-7kj">
-                                                    <rect key="frame" x="0.0" y="87.5" width="398" height="41"/>
-                                                    <subviews>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2nd Ability Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8Pl-cR-ue9">
-                                                            <rect key="frame" x="0.0" y="0.0" width="398" height="20.5"/>
-                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                            <nil key="textColor"/>
-                                                            <nil key="highlightedColor"/>
-                                                        </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2nd AbilityDescription" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gkV-ld-fQX">
-                                                            <rect key="frame" x="0.0" y="20.5" width="398" height="20.5"/>
-                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                            <nil key="textColor"/>
-                                                            <nil key="highlightedColor"/>
-                                                        </label>
-                                                    </subviews>
-                                                </stackView>
-                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="2Gf-gv-DXl">
-                                                    <rect key="frame" x="0.0" y="136.5" width="398" height="41"/>
-                                                    <subviews>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="3rd Ability Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="l1w-5y-qgn">
-                                                            <rect key="frame" x="0.0" y="0.0" width="398" height="20.5"/>
-                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                            <nil key="textColor"/>
-                                                            <nil key="highlightedColor"/>
-                                                        </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="3rd Ability Description" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uPi-nk-UUK">
-                                                            <rect key="frame" x="0.0" y="20.5" width="398" height="20.5"/>
-                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                            <nil key="textColor"/>
-                                                            <nil key="highlightedColor"/>
-                                                        </label>
-                                                    </subviews>
-                                                </stackView>
-                                            </subviews>
-                                        </stackView>
-                                    </subviews>
-                                    <constraints>
-                                        <constraint firstItem="T9L-2a-HuC" firstAttribute="leading" secondItem="7Bn-Xa-DH6" secondAttribute="leading" constant="8" id="BRA-kJ-oed"/>
-                                        <constraint firstAttribute="bottom" secondItem="T9L-2a-HuC" secondAttribute="bottom" constant="8" id="b12-5u-cqs"/>
-                                        <constraint firstItem="T9L-2a-HuC" firstAttribute="top" secondItem="7Bn-Xa-DH6" secondAttribute="top" constant="8" id="iKQ-2V-8Ri"/>
-                                        <constraint firstAttribute="trailing" secondItem="T9L-2a-HuC" secondAttribute="trailing" constant="8" id="la0-qA-Y0E"/>
-                                    </constraints>
-                                </tableViewCellContentView>
-                                <connections>
-                                    <outlet property="firstAbilityDescriptionLabel" destination="mVs-w9-Obw" id="e4q-wn-1n3"/>
-                                    <outlet property="firstAbilityNameLabel" destination="ear-NA-rCe" id="DGv-J3-Jis"/>
-                                    <outlet property="secondAbilityDescriptionLabel" destination="gkV-ld-fQX" id="EGM-e1-riN"/>
-                                    <outlet property="secondAbilityNameLabel" destination="8Pl-cR-ue9" id="reF-ec-QKF"/>
-                                    <outlet property="thirdAbilityDescriptionLabel" destination="uPi-nk-UUK" id="4dY-Bk-jlC"/>
-                                    <outlet property="thirdAbiltyNameLabel" destination="l1w-5y-qgn" id="i9L-ev-zTu"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>

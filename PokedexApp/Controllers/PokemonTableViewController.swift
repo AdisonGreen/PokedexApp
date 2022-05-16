@@ -30,6 +30,15 @@ class PokemonTableViewController: UITableViewController {
         DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
             self.tableView.reloadData()
         }
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
+            self.tableView.reloadData()
+        }
+        DispatchQueue.main.asyncAfter(deadline: .now() + 3.0) {
+            self.tableView.reloadData()
+        }
+        DispatchQueue.main.asyncAfter(deadline: .now() + 4.0) {
+            self.tableView.reloadData()
+        }
     }
     
     func fetchAbilitesAndConfigure(cell: PokemonAbilitesTableViewCell, forItemAt indexPath: IndexPath) {
@@ -308,6 +317,10 @@ class PokemonTableViewController: UITableViewController {
         return 6
     }
     
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        self.tableView.deselectRow(at: indexPath, animated: true)
+    }
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.row == 0 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "PokemonNameAndNumber", for: indexPath) as! PokemonNameAndNumberTableViewCell
@@ -333,13 +346,13 @@ class PokemonTableViewController: UITableViewController {
             fetchDescriptionAndConfigure(cell: cell, forItemAt: indexPath)
             
             return cell
-        } else if indexPath.row == 5 {
+        } else if indexPath.row == 4 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "PokemonAbilities", for: indexPath) as! PokemonAbilitesTableViewCell
             
             fetchAbilitesAndConfigure(cell: cell, forItemAt: indexPath)
             
             return cell
-        } else if indexPath.row == 4 {
+        } else if indexPath.row == 5 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "PokemonStats", for: indexPath) as! PokemonStatsTableViewCell
             
             fetchStatsAndConfigure(cell: cell, forItemAt: indexPath)

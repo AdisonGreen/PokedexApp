@@ -86,8 +86,7 @@ class PokemonCollectionViewController: UICollectionViewController, UISearchResul
 //            }
 //
 //            initialLetters = itemsByInitialLetter.keys.sorted()
-        
-            collectionView.reloadData()
+        collectionView.reloadData()
     }
     
     func generateOtherLayout() -> UICollectionViewLayout {
@@ -179,19 +178,19 @@ class PokemonCollectionViewController: UICollectionViewController, UISearchResul
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let identifier = activeLayout == .grid ? reuseIdentifier : otherIdentifier
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: identifier, for: indexPath) as! PokemonCollectionViewCell
-    
+
         // Configure the cell
         if identifier == reuseIdentifier {
             cell.pokemonNameLabel.isHidden = true
-            
+
             cell.pokemonImageView.image = UIImage(named: "\(filteredItems[indexPath.row].pokedexNumber)")
         } else {
             cell.pokemonNameLabel.isHidden = false
             cell.pokemonNameLabel.text = filteredItems[indexPath.item].name.capitalizingFirstLetter()
-            
+
             cell.pokemonImageView.image = UIImage(named: "\(filteredItems[indexPath.row].pokedexNumber)")
         }
-        
+
         return cell
     }
 }

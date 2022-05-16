@@ -86,6 +86,7 @@ enum PokemonType: String, Decodable {
         case .ghost: return .ghostTypeColor
         case .dark: return .darkTypeColor
         case .unknown: return .gray
+            
         }
     }
 }
