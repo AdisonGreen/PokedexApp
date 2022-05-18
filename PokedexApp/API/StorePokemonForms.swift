@@ -13,8 +13,13 @@ struct StorePokemonForms: Codable {
 }
 
 struct PokemonVarieties: Codable {
-    var is_default: Bool
+    var isDefault: Bool
     var pokemon: PokemonVarietiesNames
+    
+    enum CodingKeys: String, CodingKey {
+        case isDefault = "is-default"
+        case pokemon = "pokemon"
+    }
 }
 
 struct PokemonVarietiesNames: Codable {

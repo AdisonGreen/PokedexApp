@@ -78,7 +78,7 @@ enum PokemonType: String, Decodable {
         case .ground: return .groundTypeColor
         case .water: return .waterTypeColor
         case .fairy: return .fairyTypeColor
-        case .fighting: return .fireTypeColor
+        case .fighting: return .fightingTypeColor
         case .psychic: return .psychicTypeColor
         case .ice: return .iceTypeColor
         case .dragon: return .dragonTypeColor
